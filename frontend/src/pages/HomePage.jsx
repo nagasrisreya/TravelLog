@@ -23,11 +23,11 @@ const HomePage = ({ searchTerm }) => {
         <Text
           fontSize="30"
           fontWeight="bold"
-          bgGradient="linear(to-r, cyan.400, blue.500)"
+          bgGradient="linear(to-r, gray.700,gray.400)"
           bgClip="text"
           textAlign="center"
         >
-          Current Travel - Logs
+          CURRENT TRAVEL - LOGS
         </Text>
 
         {filteredProducts.length > 0 ? (
