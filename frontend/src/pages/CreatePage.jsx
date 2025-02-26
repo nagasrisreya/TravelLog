@@ -24,14 +24,14 @@ const CreatePage = () => {
       isClosable: true,
     });
 
-    // ✅ Fixed incorrect function name
+    // ✅ Reset form after submission
     setNew({ name: "", description: "", image: "" });
   };
 
   return (
-    <Container maxW="container.sm">
-      <VStack>
-        <Heading as="h1" size="2xl" textAlign="center" mb={8}>
+    <Container maxW="container.sm" mt={{ base: 20, md: 24 }} > {/* ✅ Added spacing */}
+      <VStack spacing={6} align="stretch">
+        <Heading as="h1" size="2xl" textAlign="center" mb={6}>
           Create New Travel-Log
         </Heading>
         <Box
@@ -41,7 +41,7 @@ const CreatePage = () => {
           rounded="lg"
           shadow="md"
         >
-          <VStack spacing={4}>
+          <VStack spacing={5}>
             <Input
               placeholder="Place Name"
               name="name"
