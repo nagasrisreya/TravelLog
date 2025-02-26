@@ -72,3 +72,34 @@ export const deleteProduct = async (req, res) => {
         res.status(500).json({ success: false, message: "Server error" });
     }
 };
+
+export const getProduct = async (req, res) => {
+    const { name, page = 1, limit = 10 } = req.query; // Default page 1 and limit 10
+
+    if (!name) {
+        return res.status(400).json({ success: false, message: "Please provide a product name" });
+    }
+
+    try {
+        const products = await Product.find({ name: { $regex: name, $options: 'i' } })
+            .limit(limit * 1)
+            .skip((page - 1) * limit)
+            .exec();
+
+        const count = await Product.countDocuments({ name: { $regex: name, $options: 'i' } });
+
+        if (products.length === 0) {
+            return res.status(404).json({ success: false, message: "No products found with the given name" });
+        }
+
+        res.status(200).json({ 
+            success: true, 
+            data: products,
+            totalPages: Math.ceil(count / limit),
+            currentPage: page
+        });
+    } catch (error) {
+        console.error("Error fetching products by name:", error.message);
+        res.status(500).json({ success: false, message: "Server error", error: error.message });
+    }
+};
