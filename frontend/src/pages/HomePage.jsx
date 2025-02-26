@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 import { useProductStore } from "../store/product";
 import ProductCard from "../components/ProductCard";
 
-const HomePage = () => {
+const HomePage = ({ searchTerm }) => {
   const { fetchProducts, products } = useProductStore();
 
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]); // Ensure fetchProducts is stable
 
-  console.log("products", products);
+  // Filter products based on search input
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    product.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <Container maxW="container.xl" py={12}>
@@ -23,19 +27,19 @@ const HomePage = () => {
           bgClip="text"
           textAlign="center"
         >
-          Current Travel - Logs 
+          Current Travel - Logs
         </Text>
 
-        {products.length > 0 ? (
+        {filteredProducts.length > 0 ? (
           <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10} w="full">
-            {products.map((product) => (
+            {filteredProducts.map((product) => (
               <ProductCard key={product._id || product.id} product={product} />
             ))}
           </SimpleGrid>
         ) : (
           <VStack spacing={4}>
             <Text fontSize="xl" textAlign="center" fontWeight="bold" color="gray.500">
-              No Travel-logs found 😢
+              {searchTerm ? `No results for "${searchTerm}" 😢` : "No Travel-logs found 😢"}
             </Text>
             <Link to="/create">
               <Text color="blue.500" _hover={{ textDecoration: "underline" }}>
