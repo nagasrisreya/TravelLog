@@ -23,7 +23,7 @@ import {
 import { useProductStore } from "../store/product";
 import { useState } from "react";
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, searchTerm }) => {
 	const [updatedProduct, setUpdatedProduct] = useState(product);
 
 	const textColor = useColorModeValue("gray.600", "gray.200");
@@ -35,46 +35,35 @@ const ProductCard = ({ product }) => {
 
 	const handleDeleteProduct = async (pid) => {
 		const { success, message } = await deleteProduct(pid);
-		if (!success) {
-			toast({
-				title: "Error",
-				description: message,
-				status: "error",
-				duration: 3000,
-				isClosable: true,
-			});
-		} else {
-			toast({
-				title: "Success",
-				description: message,
-				status: "success",
-				duration: 3000,
-				isClosable: true,
-			});
-		}
+		toast({
+			title: success ? "Success" : "Error",
+			description: message,
+			status: success ? "success" : "error",
+			duration: 3000,
+			isClosable: true,
+		});
 	};
 
 	const handleUpdateProduct = async (pid, updatedProduct) => {
 		const { success, message } = await updateProduct(pid, updatedProduct);
 		onClose();
-		if (!success) {
-			toast({
-				title: "Error",
-				description: message,
-				status: "error",
-				duration: 3000,
-				isClosable: true,
-			});
-		} else {
-			toast({
-				title: "Success",
-				description: "Travel Log updated successfully",
-				status: "success",
-				duration: 3000,
-				isClosable: true,
-			});
-		}
+		toast({
+			title: success ? "Success" : "Error",
+			description: success ? "Travel Log updated successfully" : message,
+			status: success ? "success" : "error",
+			duration: 3000,
+			isClosable: true,
+		});
 	};
+
+	// Filtering logic: If search term is provided, check if it matches product name or description
+	if (
+		searchTerm &&
+		!product.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
+		!product.description.toLowerCase().includes(searchTerm.toLowerCase())
+	) {
+		return null; // Hide products that don’t match the search query
+	}
 
 	return (
 		<Box
@@ -152,4 +141,5 @@ const ProductCard = ({ product }) => {
 		</Box>
 	);
 };
+
 export default ProductCard;
