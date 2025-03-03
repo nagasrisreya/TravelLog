@@ -12,16 +12,16 @@ export const getProducts = async (req, res) => {
 };
 
 export const createProduct = async (req, res) => {
-    const { name, description, image } = req.body;
+    const { name, description, image, state } = req.body;
 
     console.log("Received Product Data: ", req.body);
 
-    if (!name || !description || !image) {
+    if (!name || !description || !image|| !state) {
         return res.status(400).json({ success: false, message: "Please fill all fields" });
     }
 
     try {
-        const newProduct = new Product({ name, description, image });
+        const newProduct = new Product({ name, description, image, state });
         await newProduct.save();
         res.status(201).json({ success: true, data: newProduct });
     } catch (error) {
