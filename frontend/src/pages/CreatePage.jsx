@@ -9,6 +9,7 @@ const CreatePage = () => {
     name: "",
     description: "",  
     image: "",
+    state: "",
   });
 
   const toast = useToast();
@@ -25,7 +26,7 @@ const CreatePage = () => {
     });
 
     // ✅ Reset form after submission
-    setNew({ name: "", description: "", image: "" });
+    setNew({ name: "", description: "", image: "" , state: "" });
   };
 
   return (
@@ -60,6 +61,12 @@ const CreatePage = () => {
               name="image"
               value={newProduct.image}
               onChange={(e) => setNew({ ...newProduct, image: e.target.value })}
+            />
+            <Input
+              placeholder="State of the place"
+              name="state"
+              value={newProduct.state}
+              onChange={(e) => setNew({ ...newProduct, state: e.target.value })}
             />
             <Button colorScheme="blue" onClick={handleAddProduct} w="full">
               Add Travel-Log
