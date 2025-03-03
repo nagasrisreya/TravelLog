@@ -1,54 +1,55 @@
-import { Container, Flex, Text, HStack, Button, Input, Select, useColorMode } from '@chakra-ui/react';
+import { Container, Flex, Text, HStack, Button, Input, Select, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import { PlusSquareIcon, CloseIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import { IoMoon } from 'react-icons/io5';
 import { LuSun } from 'react-icons/lu';
-import { useState } from 'react';
 
-const Navbar = ({ setSearchTerm, setSelectedState }) => {
+const Navbar = ({ searchTerm, setSearchTerm, selectedState, setSelectedState }) => {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [searchTerm, setSearchTermLocal] = useState('');
-  const [selectedState, setSelectedStateLocal] = useState('');
 
   const handleSearch = (e) => {
-    const value = e.target.value;
-    setSearchTermLocal(value);
-    setSearchTerm(value); // Update search term in App component
+    setSearchTerm(e.target.value); // Update search term in parent component
   };
 
   const handleStateFilter = (e) => {
-    const value = e.target.value;
-    setSelectedStateLocal(value);
-    setSelectedState(value); // Update selected state in App component
+    setSelectedState(e.target.value); // Update selected state in parent component
   };
 
   const clearSearch = () => {
-    setSearchTermLocal(''); // Clear local search term
-    setSearchTerm(''); // Clear search term in App component
-    setSelectedStateLocal(''); // Clear local selected state
-    setSelectedState(''); // Clear selected state in App component
+    setSearchTerm(''); // Clear search term in parent component
+    setSelectedState(''); // Clear selected state in parent component
   };
 
   return (
-    <Container maxW={"1140px"} px={4}>
+    <Container
+      maxW="1250px"
+      px={4}
+      py={5}
+      position="sticky"
+      top={10}
+      zIndex={10}
+      bg={useColorModeValue("white", "gray.800")}
+      shadow="md"
+    >
       <Flex
         h={16}
-        alignItems={"center"}
-        justifyContent={"space-between"}
-        flexDir={{
-          base: "column",
-          sm: "row"
-        }}
+        alignItems="center"
+        justifyContent="space-between"
+        flexWrap="wrap"
+        flexDir={{ base: "column", sm: "row" }}
       >
         <Text
-          fontSize={{ base: "22", sm: "30" }}
+          fontSize={{ base: "50px", sm: "35px" }}
           fontWeight="bold"
           textTransform="uppercase"
           textAlign="left"
-          bgGradient="linear(to-r, cyan.400, blue.500)"
+          bgGradient="linear(to-r, gray.700,gray.400)"
           bgClip="text"
+          ml={{ base: 0, sm: 10 }}
         >
-          <Link to="/"><h1>TRAVEL LOG</h1></Link>
+          <Link to="/" aria-label="Home">
+            <h1>TRAVEL LOG</h1>
+          </Link>
         </Text>
         <HStack spacing={4}>
           <Input
@@ -95,20 +96,18 @@ const Navbar = ({ setSearchTerm, setSelectedState }) => {
             <option value="Uttar Pradesh">Uttar Pradesh</option>
             <option value="Uttarakhand">Uttarakhand</option>
             <option value="West Bengal">West Bengal</option>
-
-            {/* Add more states as needed */}
           </Select>
           {(searchTerm || selectedState) && ( // Show clear button only when there's a search term or state filter
-            <Button onClick={clearSearch}>
+            <Button onClick={clearSearch} aria-label="Clear search">
               <CloseIcon fontSize={12} />
             </Button>
           )}
-          <Link to={"/create"}>
+          <Link to="/create" aria-label="Create new entry">
             <Button>
               <PlusSquareIcon fontSize={20} />
             </Button>
           </Link>
-          <Button onClick={toggleColorMode}>
+          <Button onClick={toggleColorMode} aria-label="Toggle color mode">
             {colorMode === "light" ? <IoMoon /> : <LuSun size="20" />}
           </Button>
         </HStack>
