@@ -121,6 +121,12 @@ const ProductCard = ({ product, searchTerm }) => {
 								value={updatedProduct.image}
 								onChange={(e) => setUpdatedProduct({ ...updatedProduct, image: e.target.value })}
 							/>
+							<Input
+								placeholder='place state'
+								name='state'
+								value={updatedProduct.state}
+								onChange={(e) => setUpdatedProduct({ ...updatedProduct, state: e.target.value })}
+							/>
 						</VStack>
 					</ModalBody>
 
