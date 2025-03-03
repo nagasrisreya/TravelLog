@@ -4,18 +4,23 @@ import { Link } from "react-router-dom";
 import { useProductStore } from "../store/product";
 import ProductCard from "../components/ProductCard";
 
-const HomePage = ({ searchTerm }) => {
+const HomePage = ({ searchTerm, selectedState }) => {
   const { fetchProducts, products } = useProductStore();
 
   useEffect(() => {
     fetchProducts();
   }, [fetchProducts]); // Ensure fetchProducts is stable
 
-  // Filter products based on search input
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    product.description.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Filter products based on search input and selected state
+  const filteredProducts = products.filter((product) => {
+    const matchesSearchTerm =
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesState = selectedState ? product.state === selectedState : true;
+
+    return matchesSearchTerm && matchesState;
+  });
 
   return (
     <Container maxW="container.xl" py={12}>
@@ -39,7 +44,9 @@ const HomePage = ({ searchTerm }) => {
         ) : (
           <VStack spacing={4}>
             <Text fontSize="xl" textAlign="center" fontWeight="bold" color="gray.500">
-              {searchTerm ? `No results for "${searchTerm}" 😢` : "No Travel-logs found 😢"}
+              {searchTerm || selectedState
+                ? `No results for "${searchTerm}" in ${selectedState || "any state"} 😢`
+                : "No Travel-logs found 😢"}
             </Text>
             <Link to="/create">
               <Text color="blue.500" _hover={{ textDecoration: "underline" }}>
