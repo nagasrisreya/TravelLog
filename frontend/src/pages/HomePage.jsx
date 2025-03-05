@@ -1,17 +1,23 @@
 import { Container, SimpleGrid, Text, VStack } from "@chakra-ui/react";
 import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useProductStore } from "../store/product";
+import { useAuthStore } from "../store/auth";
 import ProductCard from "../components/ProductCard";
 
 const HomePage = ({ searchTerm, selectedState }) => {
   const { fetchProducts, products } = useProductStore();
+  const { user } = useAuthStore();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchProducts();
-  }, [fetchProducts]); // Ensure fetchProducts is stable
+    if (!user) {
+      navigate("/login");
+    } else {
+      fetchProducts();
+    }
+  }, [user, fetchProducts, navigate]);
 
-  // Filter products based on search input and selected state
   const filteredProducts = products.filter((product) => {
     const matchesSearchTerm =
       product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -25,13 +31,7 @@ const HomePage = ({ searchTerm, selectedState }) => {
   return (
     <Container maxW="container.xl" py={12}>
       <VStack spacing={8}>
-        <Text
-          fontSize="30"
-          fontWeight="bold"
-          bgGradient="linear(to-r, gray.700,gray.400)"
-          bgClip="text"
-          textAlign="center"
-        >
+        <Text fontSize="30" fontWeight="bold" bgGradient="linear(to-r, gray.700,gray.400)" bgClip="text" textAlign="center">
           CURRENT TRAVEL - LOGS
         </Text>
 
