@@ -16,18 +16,22 @@ const CreatePage = () => {
   const { createProduct } = useProductStore();
 
   const handleAddProduct = async () => {
+    console.log("Payload being sent:", newProduct); // Log the payload
     const { success, message } = await createProduct(newProduct);
-    
+  
     toast({
       title: success ? "Success" : "Error",
       description: message,
       status: success ? "success" : "error",
       isClosable: true,
     });
-
-    // ✅ Reset form after submission
-    setNew({ name: "", description: "", image: "" , state: "" });
+  
+    // Reset form after submission
+    if (success) {
+      setNew({ name: "", description: "", image: "", state: "" });
+    }
   };
+  
 
   return (
     <Container maxW="container.sm" mt={{ base: 20, md: 24 }} > {/* ✅ Added spacing */}
