@@ -8,3 +8,11 @@ Overall, the project serves as both a travel inspiration hub and a practical tri
 HOME PAGE
 
 ![image](https://github.com/user-attachments/assets/3ce3f8cf-142e-4bc8-a444-ca067703c33f)
+
+LOGIN PAGE
+
+![image](https://github.com/user-attachments/assets/fed76ea0-23ff-46c2-9756-ace6d158f938)
+
+RIGERSTER PAGE
+
+![image](https://github.com/user-attachments/assets/9646a15d-d972-4445-9fb1-ec7a5e3ad8cb)
