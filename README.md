@@ -34,3 +34,14 @@ FILTER and SEARCH BAR
 
 ![image](https://github.com/user-attachments/assets/fe8a1690-2d37-49cd-9061-923f0a1ebd09)
 
+CREATE PAGE
+
+![image](https://github.com/user-attachments/assets/1dcc16c4-fdd5-47f2-ba09-ed9fe642aa99)
+
+![image](https://github.com/user-attachments/assets/3e6cdb31-3c74-495f-ab04-5d672176dd16)
+
+![image](https://github.com/user-attachments/assets/92e97c92-dc02-497f-9bdb-0dc7f4e4de33)
+
+
+
+
