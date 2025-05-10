@@ -17,3 +17,10 @@ LOGIN PAGE
 RIGERSTER PAGE
 
 ![image](https://github.com/user-attachments/assets/4c0a8ec0-9472-4568-8204-281546e3560f)
+
+TRAVEL INFORMATION
+
+When a user clicks on a travel log, a popup appears asking for their current location. Once entered, the app uses external APIs to fetch useful travel data. It calculates the distance and estimated travel time from the user's location to the travel destination using a mapping service like Google Maps. It also determines available modes of transportation (like driving, walking, or transit) supported by the API. Additionally, the app fetches popular nearby places to visit at the destination using a places discovery API. This personalized information helps users better plan their travel directly within the app.
+
+![image](https://github.com/user-attachments/assets/df895c60-76e1-463b-9db7-53e6cb9faac0)
+
