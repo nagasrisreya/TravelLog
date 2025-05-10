@@ -28,5 +28,9 @@ click fetch details to get result
 
 ![image](https://github.com/user-attachments/assets/d9e4b7a1-b605-4619-a9df-f443cd0c7ac8)
 
+FILTER and SEARCH BAR
 
+![image](https://github.com/user-attachments/assets/6e49490e-3415-41e1-8af9-8c884f8fdcc8)
+
+![image](https://github.com/user-attachments/assets/fe8a1690-2d37-49cd-9061-923f0a1ebd09)
 
