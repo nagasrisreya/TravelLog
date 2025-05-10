@@ -11,7 +11,8 @@ HOME PAGE
 
 LOGIN PAGE
 
-![image](https://github.com/user-attachments/assets/fed76ea0-23ff-46c2-9756-ace6d158f938)
+![image](https://github.com/user-attachments/assets/ced5b9f2-02e7-407e-b03a-e56956c23176)
+
 
 RIGERSTER PAGE
 
