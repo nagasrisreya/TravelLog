@@ -16,4 +16,4 @@ LOGIN PAGE
 
 RIGERSTER PAGE
 
-![image](https://github.com/user-attachments/assets/9646a15d-d972-4445-9fb1-ec7a5e3ad8cb)
+![image](https://github.com/user-attachments/assets/4c0a8ec0-9472-4568-8204-281546e3560f)
