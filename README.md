@@ -22,5 +22,11 @@ TRAVEL INFORMATION
 
 When a user clicks on a travel log, a popup appears asking for their current location. Once entered, the app uses external APIs to fetch useful travel data. It calculates the distance and estimated travel time from the user's location to the travel destination using a mapping service like Google Maps. It also determines available modes of transportation (like driving, walking, or transit) supported by the API. Additionally, the app fetches popular nearby places to visit at the destination using a places discovery API. This personalized information helps users better plan their travel directly within the app.
 
-![image](https://github.com/user-attachments/assets/df895c60-76e1-463b-9db7-53e6cb9faac0)
+![image](https://github.com/user-attachments/assets/d791e7b6-dea0-49c9-b8e7-d97d95560b5b)
+
+click fetch details to get result
+
+![image](https://github.com/user-attachments/assets/d9e4b7a1-b605-4619-a9df-f443cd0c7ac8)
+
+
 
